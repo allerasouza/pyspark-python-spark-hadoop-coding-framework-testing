@@ -1,18 +1,18 @@
 # version: "3.3"
 services:
   spark-master:
-    image: our-own-apache-spark:3.5.3
+    image: our-own-apache-spark-java21:3.5.3
     ports:
       - "9090:8080"
       - "7077:7077"
     volumes:
-       - ./apps:/opt/spark-apps
-       - ./data:/opt/spark-data
+      - ./apps:/opt/spark-apps
+      - ./data:/opt/spark-data
     environment:
       - SPARK_LOCAL_IP=spark-master
       - SPARK_WORKLOAD=master
   spark-worker-a:
-    image: our-own-apache-spark:3.5.3
+    image: our-own-apache-spark-java21:3.5.3
     ports:
       - "9091:8080"
       - "7000:7000"
@@ -27,10 +27,10 @@ services:
       - SPARK_WORKLOAD=worker
       - SPARK_LOCAL_IP=spark-worker-a
     volumes:
-       - ./apps:/opt/spark-apps
-       - ./data:/opt/spark-data
+      - ./apps:/opt/spark-apps
+      - ./data:/opt/spark-data
   spark-worker-b:
-    image: our-own-apache-spark:3.5.3
+    image: our-own-apache-spark-java21:3.5.3
     ports:
       - "9092:8080"
       - "7001:7000"
@@ -45,5 +45,5 @@ services:
       - SPARK_WORKLOAD=worker
       - SPARK_LOCAL_IP=spark-worker-b
     volumes:
-        - ./apps:/opt/spark-apps
-        - ./data:/opt/spark-data
+      - ./apps:/opt/spark-apps
+      - ./data:/opt/spark-data
